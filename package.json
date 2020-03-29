@@ -1,0 +1,26 @@
+{
+  "name": "@definitylabs/dispatcher.js",
+  "version": "1.0.0",
+  "description": "",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DefinityLabs/dispatcher.js.git"
+  },
+  "keywords": [
+    "event-driven"
+  ],
+  "author": "Definity Labs",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/DefinityLabs/dispatcher.js/issues"
+  },
+  "homepage": "https://github.com/DefinityLabs/dispatcher.js#readme",
+  "devDependencies": {
+    "jest": "^25.2.3"
+  }
+}

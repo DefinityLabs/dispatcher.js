@@ -1,0 +1,73 @@
+# dispatcher.js
+
+This package is responsible for managing events.
+
+## Install
+
+```shell script
+npm install @definitylabs/dispatcher.js
+```
+
+## Register
+Start listening events.
+
+### Register for single event
+
+```javascript
+const Dispatcher = require('@definitylabs/dispatcher.js');
+
+const MY_EVENT = 'my-event-name';
+
+function subscriber(eventType, object) {
+  console.log(eventType, object);
+}
+
+Dispatcher.register(subscriber, MY_EVENT);
+```
+
+### Register for multiple events
+
+The subscriber will be triggered in case of any of these events will be dispatch.
+
+```javascript
+const Events = {
+  EVENT_ONE: 'eventOne',
+  EVENT_TWO: 'eventTwo'
+};
+
+Dispatcher.register(subscriber, [Events.EVENT_ONE, Events.EVENT_TWO]);
+```
+
+### Register for all events
+
+The subscriber will be triggered in case of any events will be dispatch.
+
+```javascript
+Dispatcher.register(subscriber);
+```
+
+## Dispatch
+Dispatch event with (or without) a payload and it will trigger all registered subscribers for that particular event.
+
+```javascript
+// dispatch with payload
+const payload = {...}; // it can be any object or value
+Dispatcher.dispatch(Events.EVENT_ONE, payload);
+
+// dispatch without payload
+Dispatcher.dispatch(Events.EVENT_ONE);
+```
+
+## Unsubscribe
+Stop listening events.
+
+```javascript
+// unregister for single event
+Dispatcher.unregister(subscriber, MY_EVENT);
+
+// unregister for multiple events
+Dispatcher.unregister(subscriber, [Events.EVENT_ONE, Events.EVENT_TWO]);
+
+// unregister for all events
+Dispatcher.unregister(subscriber);
+```
