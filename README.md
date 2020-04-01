@@ -14,7 +14,7 @@ Start listening events.
 ### Register for single event
 
 ```javascript
-const Dispatcher = require('@definitylabs/dispatcher.js');
+const {Dispatcher} = require('@definitylabs/dispatcher.js');
 
 const MY_EVENT = 'my-event-name';
 
@@ -44,6 +44,28 @@ The subscriber will be triggered in case of any events will be dispatch.
 
 ```javascript
 Dispatcher.register(subscriber);
+```
+
+### Register for combined events
+
+The subscriber will be triggered only after all events will be dispatch.
+
+```javascript
+const {Dispatch, Collector} = require('@definitylabs/dispatcher.js');
+
+const collector = new Collector(subscriber, [Events.EVENT_ONE, Events.EVENT_TWO]);
+
+Dispatch.reigster(collector, collector.events());
+```
+
+A timeout can be specified in case one of the events is missing.
+
+```javascript
+const {Dispatch, Collector} = require('@definitylabs/dispatcher.js');
+
+const collector = new Collector(subscriber, [Events.EVENT_ONE, Events.EVENT_TWO]).timeout(1000); // 1s timeout
+
+Dispatch.reigster(collector, collector.events());
 ```
 
 ## Dispatch
